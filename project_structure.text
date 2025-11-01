@@ -37,6 +37,8 @@
       - index.js
     - index.css
     - main.jsx
+    - pages
+      - Builder.jsx
     - services
       - authService.js
     - utils
