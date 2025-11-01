@@ -44,6 +44,12 @@ const Register = () => {
                     Create Account
                 </h2>
 
+                {error && (
+                    <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+                        {error}
+                    </div>
+                )}
+
                 <form className="space-y-4" onSubmit={handleSubmit}>
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
