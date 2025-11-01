@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Login, Register } from "./components";
 
 const App = () => {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/page/register" element={<Register />} />
+      </Routes>
+    </Router>
   );
 };
 
