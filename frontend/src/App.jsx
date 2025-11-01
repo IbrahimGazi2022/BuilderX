@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { Login, Register, ProtectedRoute, PublicRoute } from "./components";
+import Builder from "./pages/Builder";
 
 const App = () => {
   return (
@@ -28,8 +29,17 @@ const App = () => {
           </ProtectedRoute>
         }
         />
-        
-        <Route path="/" element={<Navigate to="/login" />} />
+
+        <Route
+          path="/builder"
+          element={
+            <ProtectedRoute>
+              <Builder />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/" element={<Navigate to="/builder" />} />
       </Routes>
 
     </Router>
