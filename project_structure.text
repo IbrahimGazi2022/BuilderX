@@ -14,3 +14,25 @@
   - server.js
   - utils
     - generateToken.js
+- frontend
+  - .gitignore
+  - README.md
+  - eslint.config.js
+  - index.html
+  - package-lock.json
+  - package.json
+  - public
+  - src
+    - App.css
+    - App.jsx
+    - assets
+    - components
+      - Auth
+        - Login.jsx
+        - Register.jsx
+      - index.js
+    - index.css
+    - main.jsx
+  - vercel.json
+  - vite.config.js
+- project_structure.text
