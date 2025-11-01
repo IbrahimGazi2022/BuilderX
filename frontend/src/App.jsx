@@ -1,16 +1,40 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Login, Register } from "./components";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Login, Register, ProtectedRoute, PublicRoute } from "./components";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/page/register" element={<Register />} />
+
+        {/* PUBLIC ROUTES */}
+        <Route path="/login" element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+        />
+
+        <Route path="/register" element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        }
+        />
+        {/* PROTECTED ROUTES */}
+        <Route path="/dashboard" element={
+          <ProtectedRoute>
+            <h1>Dashboard</h1>
+          </ProtectedRoute>
+        }
+        />
+        
+        <Route path="/" element={<Navigate to="/login" />} />
       </Routes>
+
     </Router>
   );
 };
 
 export default App;
+
