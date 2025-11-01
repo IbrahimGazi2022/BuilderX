@@ -1,0 +1,16 @@
+- backend
+  - .env
+  - .gitignore
+  - DB
+    - connectDB.js
+  - controllers
+    - authController.js
+  - models
+    - userModel.js
+  - package-lock.json
+  - package.json
+  - routes
+    - authRoutes.js
+  - server.js
+  - utils
+    - generateToken.js
