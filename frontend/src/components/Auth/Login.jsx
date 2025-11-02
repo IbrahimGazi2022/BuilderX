@@ -25,7 +25,6 @@ const Login = () => {
 
         try {
             const data = await loginUser(formData);
-
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
             navigate("/builder");
@@ -60,6 +59,7 @@ const Login = () => {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
+                            autoComplete="email"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009245] focus:border-transparent transition"
                         />
                     </div>
@@ -74,6 +74,7 @@ const Login = () => {
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
+                            autoComplete="current-password"
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009245] focus:border-transparent transition"
                         />
                     </div>
@@ -88,7 +89,7 @@ const Login = () => {
 
                     <div className="text-center text-sm text-gray-500 pt-2">
                         Don't have an account ?{" "}
-                        <Link to="/page/register" className="text-[#354E33] font-bold hover:underline">
+                        <Link to="/register" className="text-[#354E33] font-bold hover:underline">
                             Register
                         </Link>
                     </div>

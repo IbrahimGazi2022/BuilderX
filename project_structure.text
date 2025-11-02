@@ -5,12 +5,16 @@
     - connectDB.js
   - controllers
     - authController.js
+    - platformController.js
+    - projectController.js
   - models
+    - projectModel.js
     - userModel.js
   - package-lock.json
   - package.json
   - routes
     - authRoutes.js
+    - projectRoutes.js
   - server.js
   - utils
     - generateToken.js
@@ -60,6 +64,7 @@
       - Builder.jsx
     - services
       - authService.js
+      - projectService.js
     - utils
       - api.js
       - componentMap.js

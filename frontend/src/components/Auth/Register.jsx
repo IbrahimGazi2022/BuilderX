@@ -60,6 +60,7 @@ const Register = () => {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
+                            autoComplete="name" 
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009245] focus:border-transparent transition"
                         />
                     </div>
@@ -74,6 +75,7 @@ const Register = () => {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
+                            autoComplete="email" 
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009245] focus:border-transparent transition"
                         />
                     </div>
@@ -88,6 +90,7 @@ const Register = () => {
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
+                            autoComplete="new-password" 
                             className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#009245] focus:border-transparent transition"
                         />
                     </div>

@@ -7,12 +7,12 @@ const Canvas = ({ components, onDeleteComponent }) => {
 
   return (
     <div className="bg-gray-50 h-full overflow-y-auto">
+
+      {/* -- CANVAS HEADER -- */}
       <div className="p-4 border-b border-gray-200 bg-white">
-        <h2 className="text-lg font-bold text-gray-800">Canvas</h2>
-        <p className="text-xs text-gray-500 mt-1">
-          {components.length > 0
-            ? `${components.length} component(s) added`
-            : 'Drag designs here to build your page'}
+        <h2 className="text-lg font-bold text-(--main-text-color)">Canvas</h2>
+        <p className="text-xs text-(--main-text-color) font-semibold mt-1">
+          {components.length > 0 ? `${components.length} component(s) added` : 'Drag designs here to build your page'}
         </p>
       </div>
 
@@ -24,10 +24,10 @@ const Canvas = ({ components, onDeleteComponent }) => {
         {components.length === 0 ? (
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-16 text-center bg-white">
             <div className="text-6xl mb-4">{isOver ? '🎯' : '👇'}</div>
-            <h3 className="text-xl font-semibold text-gray-700 mb-2">
+            <h3 className="text-xl font-semibold text-(--main-text-color) mb-2">
               {isOver ? 'Drop here!' : 'Start Building'}
             </h3>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-black">
               Drag components from the design panel
             </p>
           </div>
