@@ -2,7 +2,7 @@ import React from 'react';
 
 const HeroDesign1 = () => {
     return (
-        <section className="bg-linear-to-r from-blue-50 to-purple-50 py-20 h-[280px]">
+        <section className="bg-linear-to-r from-blue-50 to-purple-50 py-20">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid md:grid-cols-2 gap-12 items-center">
                     {/* Left Content */}

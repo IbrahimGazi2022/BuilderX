@@ -2,7 +2,7 @@ import React from "react";
 
 const HeroDesign3 = () => {
     return (
-      <section className="bg-white py-24 h-[340px]">
+      <section className="bg-white py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left Content */}

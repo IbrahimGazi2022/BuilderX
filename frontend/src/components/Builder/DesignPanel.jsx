@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDraggable } from '@dnd-kit/core';
 import NavbarDesign1 from '../PrebuiltComponents/Navbars/NavbarDesign1';
 import NavbarDesign2 from '../PrebuiltComponents/Navbars/NavbarDesign2';
 import NavbarDesign3 from '../PrebuiltComponents/Navbars/NavbarDesign3';
@@ -7,6 +8,35 @@ import HeroDesign2 from '../PrebuiltComponents/Heroes/HeroDesign2';
 import BannerDesign1 from '../PrebuiltComponents/Banners/BannerDesign1';
 import BannerDesign2 from '../PrebuiltComponents/Banners/BannerDesign2';
 import BannerDesign3 from '../PrebuiltComponents/Banners/BannerDesign3';
+
+const DraggableDesignCard = ({ design, categoryId }) => {
+    const { attributes, listeners, setNodeRef, isDragging } = useDraggable({
+        id: design.id,
+        data: {
+            id: design.id,
+            type: categoryId,
+            name: design.name,
+            component: design.component
+        }
+    });
+
+    const DesignComponent = design.component;
+
+    return (
+        <div
+            ref={setNodeRef}
+            {...listeners}
+            {...attributes}
+            className={`border-2 rounded-lg overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all duration-200 cursor-grab active:cursor-grabbing ${isDragging ? 'opacity-50 border-blue-500' : 'border-gray-300'
+                }`}
+        >
+            {/* Design Preview */}
+            <div className="bg-gray-50 scale-50 origin-top-left transform w-[200%] pointer-events-none">
+                <DesignComponent />
+            </div>
+        </div>
+    );
+};
 
 const DesignPanel = ({ selectedCategory }) => {
     const designs = {
@@ -45,20 +75,13 @@ const DesignPanel = ({ selectedCategory }) => {
                 {selectedCategory ? (
                     currentDesigns.length > 0 ? (
                         <div className="space-y-4">
-                            {currentDesigns.map((design) => {
-                                const DesignComponent = design.component;
-                                return (
-                                    <div
-                                        key={design.id}
-                                        className="border-2 border-gray-300 rounded-lg overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all duration-200 cursor-pointer"
-                                    >
-                                        {/* Design Preview */}
-                                        <div className="bg-gray-50 scale-50 origin-top-left transform w-[200%] pointer-events-none">
-                                            <DesignComponent />
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                            {currentDesigns.map((design) => (
+                                <DraggableDesignCard
+                                    key={design.id}
+                                    design={design}
+                                    categoryId={selectedCategory.id}
+                                />
+                            ))}
                         </div>
                     ) : (
                         <div className="flex items-center justify-center h-64 text-gray-400">
