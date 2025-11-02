@@ -4,9 +4,11 @@ import NavbarDesign2 from '../PrebuiltComponents/Navbars/NavbarDesign2';
 import NavbarDesign3 from '../PrebuiltComponents/Navbars/NavbarDesign3';
 import HeroDesign1 from '../PrebuiltComponents/Heroes/HeroDesign1';
 import HeroDesign2 from '../PrebuiltComponents/Heroes/HeroDesign2';
+import BannerDesign1 from '../PrebuiltComponents/Banners/BannerDesign1';
+import BannerDesign2 from '../PrebuiltComponents/Banners/BannerDesign2';
+import BannerDesign3 from '../PrebuiltComponents/Banners/BannerDesign3';
 
 const DesignPanel = ({ selectedCategory }) => {
-    // Design data for each category
     const designs = {
         navbar: [
             { id: 'navbar-1', name: 'Simple & Clean', component: NavbarDesign1 },
@@ -17,8 +19,11 @@ const DesignPanel = ({ selectedCategory }) => {
             { id: 'hero-1', name: 'Side by Side', component: HeroDesign1 },
             { id: 'hero-2', name: 'Centered Hero', component: HeroDesign2 },
         ],
-        features: [],
-        footer: [],
+        banner: [
+            { id: 'banner-1', name: 'Gradient Promo', component: BannerDesign1 },
+            { id: 'banner-2', name: 'Dark Modern', component: BannerDesign2 },
+            { id: 'banner-3', name: 'Clean Centered', component: BannerDesign3 },
+        ],
     };
 
     const currentDesigns = selectedCategory ? designs[selectedCategory.id] || [] : [];

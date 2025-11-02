@@ -6,8 +6,8 @@ const ComponentLibrary = ({ onSelectCategory }) => {
     const categories = [
         { id: 'navbar', name: 'Navbar' },
         { id: 'hero', name: 'Hero Section' },
-        { id: 'banners', name: 'Banners' },
-        { id: 'cart', name: 'Add to Cart' },
+        { id: 'banner', name: 'Banners' },
+        { id: 'cart', name: 'Add to Cart' } ,
         { id: 'course', name: 'New Course' },
         { id: 'payment', name: 'Payment Page' },
         { id: 'available', name: 'Available Course' },
