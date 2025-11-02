@@ -32,6 +32,25 @@
       - Auth
         - Login.jsx
         - Register.jsx
+      - Builder
+        - BuilderNavbar.jsx
+        - Canvas.jsx
+        - ComponentLibrary.jsx
+        - DesignPanel.jsx
+        - PreviewModal.jsx
+      - PrebuiltComponents
+        - Banners
+          - BannerDesign1.jsx
+          - BannerDesign2.jsx
+          - BannerDesign3.jsx
+        - Footers
+        - Heroes
+          - HeroDesign1.jsx
+          - HeroDesign2.jsx
+        - Navbars
+          - NavbarDesign1.jsx
+          - NavbarDesign2.jsx
+          - NavbarDesign3.jsx
       - ProtectedRoute.jsx
       - PublicRoute.jsx
       - index.js

@@ -1,4 +1,5 @@
 import React from "react";
+import { getComponentByType } from "../../utils/componentMap";
 
 const PreviewModal = ({ isOpen, onClose, components }) => {
     if (!isOpen) return null;
@@ -39,7 +40,24 @@ const PreviewModal = ({ isOpen, onClose, components }) => {
                     ) : (
                         <div>
                             {components.map((item) => {
-                                const ItemComponent = item.component;
+                                const ItemComponent = getComponentByType(item.type);
+
+                                if (!ItemComponent) {
+                                    return (
+                                        <div
+                                            key={item.id}
+                                            className="bg-red-50 border-2 border-red-300 p-8 text-center"
+                                        >
+                                            <p className="text-red-600 font-semibold text-lg">
+                                                ⚠️ Component "{item.type}" not found!
+                                            </p>
+                                            <p className="text-red-500 text-sm mt-2">
+                                                This component may have been removed or renamed.
+                                            </p>
+                                        </div>
+                                    );
+                                }
+
                                 return (
                                     <div key={item.id}>
                                         <ItemComponent />

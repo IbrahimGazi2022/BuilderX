@@ -1,10 +1,9 @@
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
+import { getComponentByType } from '../../utils/componentMap';
 
 const Canvas = ({ components, onDeleteComponent }) => {
-  const { setNodeRef, isOver } = useDroppable({
-    id: 'canvas-droppable',
-  });
+  const { setNodeRef, isOver } = useDroppable({ id: 'canvas-droppable' });
 
   return (
     <div className="bg-gray-50 h-full overflow-y-auto">
@@ -24,9 +23,7 @@ const Canvas = ({ components, onDeleteComponent }) => {
       >
         {components.length === 0 ? (
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-16 text-center bg-white">
-            <div className="text-6xl mb-4">
-              {isOver ? '🎯' : '👇'}
-            </div>
+            <div className="text-6xl mb-4">{isOver ? '🎯' : '👇'}</div>
             <h3 className="text-xl font-semibold text-gray-700 mb-2">
               {isOver ? 'Drop here!' : 'Start Building'}
             </h3>
@@ -37,7 +34,27 @@ const Canvas = ({ components, onDeleteComponent }) => {
         ) : (
           <div className="space-y-4">
             {components.map((item) => {
-              const ItemComponent = item.component;
+              const ItemComponent = getComponentByType(item.type);
+
+              if (!ItemComponent) {
+                return (
+                  <div
+                    key={item.id}
+                    className="bg-red-50 border-2 border-red-300 rounded-lg p-6 text-center"
+                  >
+                    <p className="text-red-600 font-semibold">
+                      ⚠️ Component "{item.type}" not found!
+                    </p>
+                    <button
+                      onClick={() => onDeleteComponent(item.id)}
+                      className="mt-2 bg-red-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-600 transition"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                );
+              }
+
               return (
                 <div
                   key={item.id}
