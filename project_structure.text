@@ -62,6 +62,7 @@
       - authService.js
     - utils
       - api.js
+      - componentMap.js
   - vercel.json
   - vite.config.js
 - project_structure.text
