@@ -8,7 +8,7 @@ const ComponentLibrary = ({ onSelectCategory }) => {
         { id: 'hero', name: 'Hero Section' },
         { id: 'banner', name: 'Banners' },
         { id: 'cart', name: 'Add to Cart' },
-        { id: 'course', name: 'New Course' },
+        { id: 'courses', name: 'New Course' },
         { id: 'payment', name: 'Payment Page' },
         { id: 'available', name: 'Available Course' },
         { id: 'footer', name: 'Footer' },

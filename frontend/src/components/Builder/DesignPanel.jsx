@@ -55,6 +55,20 @@ const DesignPanel = ({ selectedCategory }) => {
             { id: 'banner-2', name: 'Dark Modern', type: 'BannerDesign2' },
             { id: 'banner-3', name: 'Clean Centered', type: 'BannerDesign3' },
         ],
+        cart: [
+            { id: 'cart-1', name: 'Gradient Promo', type: 'CartDesign1' },
+            { id: 'cart-2', name: 'Dark Modern', type: 'CartDesign2' },
+            { id: 'cart-3', name: 'Clean Centered', type: 'CartDesign3' },
+        ],
+        courses: [
+            { id: 'courses-1', name: 'Gradient Promo', type: 'NewCourseDesign1' },
+            { id: 'courses-2', name: 'Dark Modern', type: 'NewCourseDesign2' },
+            { id: 'courses-3', name: 'Clean Centered', type: 'NewCourseDesign3' },
+        ],
+        available: [
+            { id: 'available-1', name: 'Gradient Promo', type: 'AvailableCourseDesign1' },
+            { id: 'available-2', name: 'Dark Modern', type: 'AvailableCourseDesign2' },
+        ],
         footer: [
             { id: 'footer-1', name: 'Minimal Footer', type: 'FooterDesign1' },
             { id: 'footer-2', name: 'Detailed Footer', type: 'FooterDesign2' },

@@ -12,6 +12,20 @@ import BannerDesign1 from '../components/PrebuiltComponents/Banners/BannerDesign
 import BannerDesign2 from '../components/PrebuiltComponents/Banners/BannerDesign2';
 import BannerDesign3 from '../components/PrebuiltComponents/Banners/BannerDesign3';
 
+// CARTS
+import CartDesign1 from '../components/PrebuiltComponents/Carts/CartDesign1';
+import CartDesign2 from '../components/PrebuiltComponents/Carts/CartDesign2';
+import CartDesign3 from '../components/PrebuiltComponents/Carts/CartDesign3';
+
+// COURSES
+import NewCourseDesign1 from '../components/PrebuiltComponents/Courses/NewCourseDesign1';
+import NewCourseDesign2 from '../components/PrebuiltComponents/Courses/NewCourseDesign2';
+import NewCourseDesign3 from '../components/PrebuiltComponents/Courses/NewCourseDesign3';
+
+// AVAILABLE COURSES
+import AvailableCourseDesign1 from '../components/PrebuiltComponents/AvailableCourse/AvailableCourseDesign1';
+import AvailableCourseDesign2 from '../components/PrebuiltComponents/AvailableCourse/AvailableCourseDesign2';
+
 // FOOTERS
 import FooterDesign1 from '../components/PrebuiltComponents/Footers/FooterDesign1';
 import FooterDesign2 from '../components/PrebuiltComponents/Footers/FooterDesign2';
@@ -31,6 +45,20 @@ export const componentMap = {
     'BannerDesign1': BannerDesign1,
     'BannerDesign2': BannerDesign2,
     'BannerDesign3': BannerDesign3,
+
+    // CARTS
+    'CartDesign1': CartDesign1,
+    'CartDesign2': CartDesign2,
+    'CartDesign3': CartDesign3,
+
+    // COURSES
+    'NewCourseDesign1': NewCourseDesign1,
+    'NewCourseDesign2': NewCourseDesign2,
+    'NewCourseDesign3': NewCourseDesign3,
+
+    // AVAILABLE COURSES
+    'AvailableCourseDesign1': AvailableCourseDesign1,
+    'AvailableCourseDesign2': AvailableCourseDesign2,
 
     // FOOTERS
     'FooterDesign1': FooterDesign1,
