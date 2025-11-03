@@ -13,7 +13,7 @@ const BuilderNavbar = ({ onPreview, onSave, hasUnsavedChanges }) => {
             if (!confirmLogout) return;
         }
         localStorage.removeItem('token');
-        navigate('/login');
+        navigate('/');
     };
 
     return (
