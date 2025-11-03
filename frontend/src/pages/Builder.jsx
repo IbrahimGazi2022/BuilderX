@@ -131,7 +131,7 @@ const Builder = () => {
     // -- LOADING SCREEN -- 
     if (isLoading) {
         return (
-            <div className="h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-purple-50">
+            <div className="h-screen flex items-center justify-center bg-(--bg-color)">
                 <div className="text-center">
                     <div className="animate-spin text-6xl mb-4">⏳</div>
                     <p className="text-xl font-semibold text-gray-700">Loading your project...</p>

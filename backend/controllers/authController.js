@@ -4,14 +4,16 @@ import generateToken from "../utils/generateToken.js";
 
 export const registerUser = async (req, res) => {
     try {
+        // GET DATA FROM REQUEST BODY
         const { name, email, password } = req.body;
 
+        // CHECK IF ALL FIELDS ARE PROVIDED
         if (!name || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
 
+        // VALIDATE PASSWORD STRENGTH
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&_])[A-Za-z\d@$!%*?#&_]{8,}$/;
-
         if (!passwordRegex.test(password)) {
             return res.status(400).json({
                 message:
@@ -19,19 +21,23 @@ export const registerUser = async (req, res) => {
             });
         }
 
+        // CHECK IF USER ALREADY EXISTS
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(409).json({ message: "User already exists" });
         }
 
+        // HASH PASSWORD BEFORE SAVING
         const hashedPassword = await bcrypt.hash(password, 10);
 
+        // CREATE NEW USER IN DATABASE
         const newUser = await User.create({
             name,
             email,
             password: hashedPassword,
         });
 
+        // SEND SUCCESS RESPONSE
         res.status(201).json({
             message: "User registered successfully",
             user: {
@@ -45,6 +51,7 @@ export const registerUser = async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 };
+
 
 export const loginUser = async (req, res) => {
     try {
