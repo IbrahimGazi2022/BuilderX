@@ -18,8 +18,7 @@ const Canvas = ({ components, onDeleteComponent }) => {
 
       <div
         ref={setNodeRef}
-        className={`p-8 min-h-full transition-colors ${isOver ? 'bg-blue-50' : ''
-          }`}
+        className={`p-8 min-h-full transition-colors ${isOver ? 'bg-blue-50' : ''}`}
       >
         {components.length === 0 ? (
           <div className="border-2 border-dashed border-gray-300 rounded-lg p-16 text-center bg-white">
@@ -66,12 +65,13 @@ const Canvas = ({ components, onDeleteComponent }) => {
                     </span>
                     <button
                       onClick={() => onDeleteComponent(item.id)}
-                      className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold hover:bg-red-600 transition"
+                      className="bg-(--main-text-color) text-white px-3 py-1 rounded-full text-xs font-semibold hover:(--hover-color) transition"
                     >
-                      🗑️ Delete
+                      Delete
                     </button>
                   </div>
 
+                  {/* -- ITEM COMPONENT -- */}
                   <ItemComponent />
                 </div>
               );

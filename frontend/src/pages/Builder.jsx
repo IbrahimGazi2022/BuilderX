@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { DndContext, DragOverlay, closestCenter } from '@dnd-kit/core';
+import { saveProject, getMyProject } from '../services/projectService';
 import { BuilderNavbar, Canvas, ComponentLibrary, DesignPanel, PreviewModal } from '../components';
 
-// ========================================
-// Project service import - save/load করার জন্য
-// ========================================
-import { saveProject, getMyProject } from '../services/projectService';
-
-// ========================================
-// Design components import - load করার সময় component resolve করার জন্য
-// ========================================
 import NavbarDesign1 from '../components/PrebuiltComponents/Navbars/NavbarDesign1';
 import NavbarDesign2 from '../components/PrebuiltComponents/Navbars/NavbarDesign2';
 import NavbarDesign3 from '../components/PrebuiltComponents/Navbars/NavbarDesign3';
@@ -19,10 +12,6 @@ import BannerDesign1 from '../components/PrebuiltComponents/Banners/BannerDesign
 import BannerDesign2 from '../components/PrebuiltComponents/Banners/BannerDesign2';
 import BannerDesign3 from '../components/PrebuiltComponents/Banners/BannerDesign3';
 
-// ========================================
-// Design ID → Component mapping
-// Load করার সময় designId থেকে actual component বের করার জন্য
-// ========================================
 const designComponents = {
     'navbar-1': NavbarDesign1,
     'navbar-2': NavbarDesign2,
@@ -43,88 +32,62 @@ const Builder = () => {
     const [isSaving, setIsSaving] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    // ========================================
-    // Component mount হলে database থেকে project load করি
-    // ========================================
+    // LOAD PROJECT FROM DATABASE
     useEffect(() => {
         loadProjectFromDB();
     }, []);
 
-    // ========================================
-    // Canvas components change হলে unsaved changes track করি
-    // ========================================
+    // CHECK UNSAVED CHANGES
     useEffect(() => {
-        // Loading complete হওয়ার পরেই track করব
         if (!isLoading && canvasComponents.length >= 0) {
             setHasUnsavedChanges(true);
         }
     }, [canvasComponents, isLoading]);
 
-    // ========================================
-    // Database থেকে project load করার function
-    // ========================================
+    // LOAD PROJECT FROM DATABASE
     const loadProjectFromDB = async () => {
         try {
             setIsLoading(true);
-            console.log('📥 Loading project from database...');
-
             const response = await getMyProject();
 
             if (response.success && response.data.components) {
-                // ========================================
-                // Backend থেকে components array পেয়েছি
-                // এখন প্রতিটা component এর জন্য designId use করে actual React component add করি
-                // ========================================
                 const loadedComponents = response.data.components.map(comp => ({
                     id: comp.id,
                     type: comp.type,
                     name: comp.name,
                     designId: comp.designId,
-                    component: designComponents[comp.designId]  // ✅ Component resolve করলাম
+                    component: designComponents[comp.designId],
                 }));
 
                 setCanvasComponents(loadedComponents);
                 setHasUnsavedChanges(false);
-                console.log('✅ Project loaded successfully:', loadedComponents.length, 'components');
             } else {
                 console.log('ℹ️ No saved project found. Starting fresh.');
             }
 
         } catch (error) {
             console.error('❌ Failed to load project:', error);
-            // Error হলেও page কাজ করবে, শুধু empty canvas থাকবে
         } finally {
             setIsLoading(false);
         }
     };
 
-    // ========================================
-    // Database এ project save করার function
-    // ========================================
+    // SAVE PROJECT TO DATABASE
     const handleSave = async () => {
         try {
             setIsSaving(true);
-            console.log('💾 Saving project to database...');
-
-            // ========================================
-            // canvasComponents থেকে শুধু necessary data নিয়ে backend এ পাঠাই
-            // React component object পাঠাব না (JSON serializable না)
-            // ========================================
             const componentsToSave = canvasComponents.map(comp => ({
                 id: comp.id,
                 type: comp.type,
                 name: comp.name,
-                designId: comp.designId  // ✅ এটা দিয়ে পরে component resolve করব
+                designId: comp.designId
             }));
-
-            console.log('Sending to backend:', componentsToSave);
 
             const response = await saveProject(componentsToSave);
 
             if (response.success) {
                 setHasUnsavedChanges(false);
                 alert('✅ Platform saved successfully!');
-                console.log('✅ Project saved successfully');
             }
 
         } catch (error) {
@@ -148,15 +111,12 @@ const Builder = () => {
         if (over && over.id === 'canvas-droppable' && active.data.current) {
             const draggedItem = active.data.current;
 
-            // ========================================
-            // নতুন component add করার সময় designId ও component save করি
-            // ========================================
             const newComponent = {
                 id: `${draggedItem.id}-${Date.now()}`,
                 type: draggedItem.type,
                 name: draggedItem.name,
-                designId: draggedItem.id,           // ✅ Design ID
-                component: draggedItem.component    // ✅ React component
+                designId: draggedItem.id,
+                component: draggedItem.component
             };
 
             setCanvasComponents((prev) => [...prev, newComponent]);
@@ -168,9 +128,7 @@ const Builder = () => {
         setCanvasComponents((prev) => prev.filter((comp) => comp.id !== componentId));
     };
 
-    // ========================================
-    // Loading state - project load হওয়া পর্যন্ত দেখাব
-    // ========================================
+    // -- LOADING SCREEN -- 
     if (isLoading) {
         return (
             <div className="h-screen flex items-center justify-center bg-linear-to-br from-blue-50 to-purple-50">
@@ -197,6 +155,7 @@ const Builder = () => {
                     isSaving={isSaving}
                 />
 
+                {/* -- MAIN CONTENT -- */}
                 <div className="flex-1 flex overflow-hidden">
                     <div className="w-[15%]">
                         <ComponentLibrary onSelectCategory={handleSelectCategory} />

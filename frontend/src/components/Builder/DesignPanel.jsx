@@ -29,8 +29,8 @@ const DraggableDesignCard = ({ design, categoryId }) => {
             ref={setNodeRef}
             {...listeners}
             {...attributes}
-            className={`border-2 rounded-lg overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all duration-200 cursor-grab active:cursor-grabbing ${isDragging ? 'opacity-50 border-blue-500' : 'border-gray-300'
-                }`}
+            className={`border-2 rounded-lg overflow-hidden hover:border-blue-500 hover:shadow-lg transition-all duration-200 cursor-grab active:cursor-grabbing 
+                ${isDragging ? 'opacity-50 border-blue-500' : 'border-gray-300'}`}
         >
             <div className="bg-gray-50 scale-50 origin-top-left transform w-[200%] pointer-events-none">
                 <DesignComponent />
@@ -55,6 +55,11 @@ const DesignPanel = ({ selectedCategory }) => {
             { id: 'banner-2', name: 'Dark Modern', type: 'BannerDesign2' },
             { id: 'banner-3', name: 'Clean Centered', type: 'BannerDesign3' },
         ],
+        footer: [
+            { id: 'footer-1', name: 'Minimal Footer', type: 'FooterDesign1' },
+            { id: 'footer-2', name: 'Detailed Footer', type: 'FooterDesign2' },
+            { id: 'footer-3', name: 'Newsletter Footer', type: 'FooterDesign3' },
+        ],
     };
 
     const currentDesigns = selectedCategory
@@ -62,14 +67,14 @@ const DesignPanel = ({ selectedCategory }) => {
         : [];
 
     return (
-        <div className="bg-white border-r border-gray-200 h-full overflow-y-auto">
-            <div className="p-4 border-b border-gray-200 bg-gray-50">
-                <h2 className="text-lg font-bold text-gray-800">
+        <div className="bg-[#F9FAFC] border-r border-gray-200 h-full overflow-y-auto">
+            <div className="p-4 border-b border-gray-200 bg-white">
+                <h2 className="text-lg font-bold text-(--main-text-color)">
                     {selectedCategory
                         ? `${selectedCategory.name} Designs`
                         : 'Design Panel'}
                 </h2>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-(--main-text-color) font-semibold mt-1">
                     {selectedCategory
                         ? 'Choose a design to add to canvas'
                         : 'Select a component from the library'}
@@ -102,7 +107,7 @@ const DesignPanel = ({ selectedCategory }) => {
                     <div className="flex items-center justify-center h-64 text-gray-400">
                         <div className="text-center">
                             <div className="text-6xl mb-4">📦</div>
-                            <p className="text-sm">Select a component to see designs</p>
+                            <p className="text-sm text-(--main-text-color)">Select a component to see designs</p>
                         </div>
                     </div>
                 )}
